@@ -26,31 +26,26 @@ cards = cards.sort(function() { return 0.5 - Math.random() });
 
 ///////////   		Ecriture du HTML		////////////////////
 for(i=0;i<cards.length;i++){
-	largeur = largeur + 154;  // Placement des images
+	largeur = largeur + 154;  // Calcul du placement des images
 	compteurPourHauteur++;
-		if(compteurPourHauteur == 8){hauteur = 254;largeur = 100} // Si on a une ligne de 7 images, on fait une nouvelle ligne
-
-
-//    <3<3 <3<3<3 <3<3 <3<3<3 	/!\				   	  ATTENTION, BEAUTEE SUPREME 	 			   	    /!\  <3<3 <3<3 <3<3<3 <3<3 <3<3<3 
-//    <3<3 <3<3<3 <3<3 <3<3<3 	/!\				  ECRITURE DU HTML + MON 1ER TUTO W3SCHOOL	 	   		/!\  <3<3 <3<3 <3<3<3 <3<3 <3<3<3 
-//	  <3<3 <3<3<3 <3<3 <3<3<3 	/!\ 			    FAIRE DU CSS DANS LE JAVASCRIPT 				    /!\  <3<3 <3<3<3 <3<3 <3<3<3 <3<3 
-//	  <3<3 <3<3<3 <3<3 <3<3<3   /!\  FAISABLE UNIQUEMENT PAR LES CODEURS LES PLUS DEGUEULASSES    	    /!\   <3<3<3 <3<3 <3<3<3 <3<3 <3<3
-$("#contenaire").append('<img src="img/'+cards[i]+'.jpg" id="'+cards[i]+'" style="left: '+largeur+
-'px; top: '+hauteur+'px;"><div id="black'+cards[i]+'" class="black" style="left:'+largeur+'px; top: '+hauteur+'px"></div>');
-//    <3<3 <3<3<3 <3<3 <3<3<3 <3<3 <3<3<3 <3<3 <3<3<3 <3<3 <3<3<3 <3<3 <3<3<3 <3<3 <3<3<3 <3<3 <3<3<3 <3<3 <3<3<3 <3<3 <3<3<3
-//	  <3<3 <3<3<3 <3<3 <3<3<3 <3<3 <3<3<3 <3<3 <3<3<3 <3<3 <3<3<3 <3<3 <3<3<3 <3<3 <3<3<3 <3<3 <3<3<3 <3<3 <3<3<3 <3<3 <3<3<3
-//	  <3<3 <3<3<3 <3<3 <3<3<3 <3<3 <3<3<3 <3<3 <3<3<3 <3<3 <3<3<3 <3<3 <3<3<3 <3<3 <3<3<3 <3<3 <3<3<3 <3<3 <3<3<3 <3<3 <3<3<3
-
+		if(compteurPourHauteur == 8){hauteur = 254;largeur = 100} // Si on a une ligne de 7 images, on fait une nouvelle ligne	
+	$("#contenaire").append('<img src="img/'+cards[i]+'.jpg" id="'+cards[i]+'" style="left: '+largeur+
+	'px; top: '+hauteur+'px;"><div id="black'+cards[i]+'" class="black" style="left:'+largeur+'px; top: '+hauteur+'px"></div>');
 }
-
 
 function win (){		
 if(compteur == 8){									// Si toutes les cartes sont retournées	
 	console.log('GG WP');
 	$('body').css('background-color','darkblue');	// Annonce la victoire au joueur par un magnifique fond bleu
-	$('#contenaire').css('display','none');			
+	$('#contenaire').html('<button onclick=retry() id="retry">On y retourne ?</button><h1>GG</h1>')	// Affiche un bouton qui lance la fonction 'retry'	
 	}
 }
+
+function retry(){
+	location.reload();			// Recharge la page html
+}
+
+//////	Une fonction pour chaque carte ZzzzzZZzzzZZzzzzzz
 
 $('#blackane').click(function(){		//	Si on click sur la div #blackAne, alors : 
 	$('#blackane').css('z-index', 1);	//	Passe le z-index à 1 -> fait donc apparaitre la photo
