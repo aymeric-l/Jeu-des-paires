@@ -15,34 +15,6 @@ var varLionneDeux = 100;
 var varOurs = 100;
 var varOursDeux = 100;
 var compteur = 1;
-var largeur = -54;
-var hauteur = 100;
-var compteurPourHauteur = 0;
-
-
-////////////        Mélange du tableau		////////////////////
-var cards = ["chat", "chat2", "lionne", "lionne2", "chien", "chien2", "lapins", "lapins2", "lama", "lama2", "ane", "ane2", "ours", "ours2"];
-cards = cards.sort(function() { return 0.5 - Math.random() });
-
-///////////   		Ecriture du HTML		////////////////////
-for(i=0;i<cards.length;i++){
-	largeur = largeur + 154;  // Placement des images
-	compteurPourHauteur++;
-		if(compteurPourHauteur == 8){hauteur = 254;largeur = 100} // Si on a une ligne de 7 images, on fait une nouvelle ligne
-
-
-//    <3<3 <3<3<3 <3<3 <3<3<3 	/!\				   	  ATTENTION, BEAUTEE SUPREME 	 			   	    /!\  <3<3 <3<3 <3<3<3 <3<3 <3<3<3 
-//    <3<3 <3<3<3 <3<3 <3<3<3 	/!\				  ECRITURE DU HTML + MON 1ER TUTO W3SCHOOL	 	   		/!\  <3<3 <3<3 <3<3<3 <3<3 <3<3<3 
-//	  <3<3 <3<3<3 <3<3 <3<3<3 	/!\ 			    FAIRE DU CSS DANS LE JAVASCRIPT 				    /!\  <3<3 <3<3<3 <3<3 <3<3<3 <3<3 
-//	  <3<3 <3<3<3 <3<3 <3<3<3   /!\  FAISABLE UNIQUEMENT PAR LES CODEURS LES PLUS DEGUEULASSES    	    /!\   <3<3<3 <3<3 <3<3<3 <3<3 <3<3
-$("#contenaire").append('<img src="img/'+cards[i]+'.jpg" id="'+cards[i]+'" style="left: '+largeur+
-'px; top: '+hauteur+'px;"><div id="black'+cards[i]+'" class="black" style="left:'+largeur+'px; top: '+hauteur+'px"></div>');
-//    <3<3 <3<3<3 <3<3 <3<3<3 <3<3 <3<3<3 <3<3 <3<3<3 <3<3 <3<3<3 <3<3 <3<3<3 <3<3 <3<3<3 <3<3 <3<3<3 <3<3 <3<3<3 <3<3 <3<3<3
-//	  <3<3 <3<3<3 <3<3 <3<3<3 <3<3 <3<3<3 <3<3 <3<3<3 <3<3 <3<3<3 <3<3 <3<3<3 <3<3 <3<3<3 <3<3 <3<3<3 <3<3 <3<3<3 <3<3 <3<3<3
-//	  <3<3 <3<3<3 <3<3 <3<3<3 <3<3 <3<3<3 <3<3 <3<3<3 <3<3 <3<3<3 <3<3 <3<3<3 <3<3 <3<3<3 <3<3 <3<3<3 <3<3 <3<3<3 <3<3 <3<3<3
-
-}
-
 
 function win (){		
 if(compteur == 8){									// Si toutes les cartes sont retournées	
@@ -52,13 +24,13 @@ if(compteur == 8){									// Si toutes les cartes sont retournées
 	}
 }
 
-$('#blackane').click(function(){		//	Si on click sur la div #blackAne, alors : 
-	$('#blackane').css('z-index', 1);	//	Passe le z-index à 1 -> fait donc apparaitre la photo
+$('#blackAne').click(function(){		//	Si on click sur la div #blackAne, alors : 
+	$('#blackAne').css('z-index', 1);	//	Passe le z-index à 1 -> fait donc apparaitre la photo
 	if(varGlobale == 100){				//	Si aucune carte n'est retourné
 		varGlobale = 333;				//  On sauvegarde le fait d'avoir retourné cette premiere carte
 		varAne = 333;					//	On dit que la carte retournée est "Ane"
 	}
-	else if(varGlobale == 333 && varAneDeux != 333){ // Si une carte était déjà retournée MAIS que ce n'était pas sa soeur 
+	else if(varGlobale == 333 && varAneDeux != 333){ 	// Si une carte était déjà retournée MAIS que ce n'était pas sa soeur 
 		setTimeout(function(){							
 			$('.black').css('z-index', 3);		// Attend une seconde et cache toutes les cartes
 		},1000); 
@@ -79,19 +51,19 @@ $('#blackane').click(function(){		//	Si on click sur la div #blackAne, alors :
 		varOursDeux = 100;
 	}
 	else if(varGlobale == 333 && varAneDeux == 333){	// Si une carte est déjà retournée et que c'est bien sa soeur
-		$('#blackane').css('display', 'none');			
-		$('#blackane2').css('display', 'none');		//	Affiche définitivement ces deux cartes, en mettant display none aux caches-cartes
-		varGlobale = 100;	// Sauvegarde qu'aucune carte seule n'est retournée
+		$('#blackAne').css('display', 'none');			
+		$('#blackAne2').css('display', 'none');			//	Affiche définitivement ces deux cartes, en mettant display none aux caches-cartes
+		varGlobale = 100;	// Sauvegarde qu'aucune carte n'est retournée
 		compteur++;			// Ajoute un point au compteur
 		console.log(compteur);
 		win();				// Annonce la victoire si toutes les cartes du jeu sont retournées
 	}
 });
 
-//////////////////////////////	 ET CA CONTINUE, ENCORE ET ENCORE. C'EST QUE LE DEBUT, D'ACCORD D'ACCORD.  ////////////////////////////////
+//////////////////////////////////////////////////////////////////////
 
-$('#blackane2').click(function(){
-	$('#blackane2').css('z-index', 1);
+$('#blackAne2').click(function(){
+	$('#blackAne2').css('z-index', 1);
 	if(varGlobale == 100){
 		varGlobale = 333;
 		varAneDeux = 333;
@@ -117,8 +89,8 @@ $('#blackane2').click(function(){
 		varOursDeux = 100;
 	}
 	else if(varGlobale == 333 && varAne == 333){
-		$('#blackane').css('display', 'none');
-		$('#blackane2').css('display', 'none');
+		$('#blackAne').css('display', 'none');
+		$('#blackAne2').css('display', 'none');
 		varGlobale = 100;
 		compteur++;
 		console.log(compteur);
@@ -126,10 +98,10 @@ $('#blackane2').click(function(){
 	}
 });
 
-//////////////////////////////////////////	ET CA CONTINUE, ENCORE ET ENCORE. C'EST QUE LE DEBUT, D'ACCORD D'ACCORD.  ///////////////////
+//////////////////////////////////////////////////////////////////////
 
-$('#blackchat').click(function(){
-	$('#blackchat').css('z-index', 1);
+$('#blackChat').click(function(){
+	$('#blackChat').css('z-index', 1);
 	if(varGlobale == 100){
 		varGlobale = 333;
 		varChat = 333;
@@ -155,8 +127,8 @@ $('#blackchat').click(function(){
 		varOursDeux = 100;
 	}
 	else if(varGlobale == 333 && varChatDeux == 333){
-		$('#blackchat').css('display', 'none');
-		$('#blackchat2').css('display', 'none');
+		$('#blackChat').css('display', 'none');
+		$('#blackChat2').css('display', 'none');
 		varGlobale = 100;
 		compteur++;
 		console.log(compteur);
@@ -166,8 +138,8 @@ $('#blackchat').click(function(){
 
 //////////////////////////////////////////////////////////////////////
 
-$('#blackchat2').click(function(){
-	$('#blackchat2').css('z-index', 1);
+$('#blackChat2').click(function(){
+	$('#blackChat2').css('z-index', 1);
 	if(varGlobale == 100){
 		varGlobale = 333;
 		varChatDeux = 333;
@@ -193,8 +165,8 @@ $('#blackchat2').click(function(){
 		varOursDeux = 100;
 	}
 	else if(varGlobale == 333 && varChat == 333){
-		$('#blackchat').css('display', 'none');
-		$('#blackchat2').css('display', 'none');
+		$('#blackChat').css('display', 'none');
+		$('#blackChat2').css('display', 'none');
 		varGlobale = 100;
 		compteur++;
 		console.log(compteur);
@@ -204,8 +176,8 @@ $('#blackchat2').click(function(){
 
 //////////////////////////////////////////////////////////////////////
 
-$('#blackchien').click(function(){
-	$('#blackchien').css('z-index', 1);
+$('#blackChien').click(function(){
+	$('#blackChien').css('z-index', 1);
 	if(varGlobale == 100){
 		varGlobale = 333;
 		varChien = 333;
@@ -232,8 +204,8 @@ $('#blackchien').click(function(){
 		varOursDeux = 100;
 	}
 	else if(varGlobale == 333 && varChienDeux == 333){
-		$('#blackchien').css('display', 'none');
-		$('#blackchien2').css('display', 'none');
+		$('#blackChien').css('display', 'none');
+		$('#blackChien2').css('display', 'none');
 		varGlobale = 100;
 		compteur++;
 		console.log(compteur);
@@ -243,8 +215,8 @@ $('#blackchien').click(function(){
 
 //////////////////////////////////////////////////////////////////////
 
-$('#blackchien2').click(function(){
-	$('#blackchien2').css('z-index', 1);
+$('#blackChien2').click(function(){
+	$('#blackChien2').css('z-index', 1);
 	if(varGlobale == 100){
 		varGlobale = 333;
 		varChienDeux = 333;
@@ -271,8 +243,8 @@ $('#blackchien2').click(function(){
 		varOursDeux = 100;
 	}
 	else if(varGlobale == 333 && varChien == 333){
-		$('#blackchien').css('display', 'none');
-		$('#blackchien2').css('display', 'none');
+		$('#blackChien').css('display', 'none');
+		$('#blackChien2').css('display', 'none');
 		varGlobale = 100;
 		compteur++;
 		console.log(compteur);
@@ -282,8 +254,8 @@ $('#blackchien2').click(function(){
 
 //////////////////////////////////////////////////////////////////////
 
-$('#blacklama').click(function(){
-	$('#blacklama').css('z-index', 1);
+$('#blackLama').click(function(){
+	$('#blackLama').css('z-index', 1);
 	if(varGlobale == 100){
 		varGlobale = 333;
 		varLama = 333;
@@ -309,8 +281,8 @@ $('#blacklama').click(function(){
 		varOursDeux = 100;
 	}
 	else if(varGlobale == 333 && varLamaDeux == 333){
-		$('#blacklama').css('display', 'none');
-		$('#blacklama2').css('display', 'none');
+		$('#blackLama').css('display', 'none');
+		$('#blackLama2').css('display', 'none');
 		varGlobale = 100;
 		compteur++;
 		console.log(compteur);
@@ -320,8 +292,8 @@ $('#blacklama').click(function(){
 
 //////////////////////////////////////////////////////////////////////
 
-$('#blacklama2').click(function(){
-	$('#blacklama2').css('z-index', 1);
+$('#blackLama2').click(function(){
+	$('#blackLama2').css('z-index', 1);
 	if(varGlobale == 100){
 		varGlobale = 333;
 		varLamaDeux = 333;
@@ -347,8 +319,8 @@ $('#blacklama2').click(function(){
 		varOursDeux = 100;
 	}
 	else if(varGlobale == 333 && varLama == 333){
-		$('#blacklama').css('display', 'none');
-		$('#blacklama2').css('display', 'none');
+		$('#blackLama').css('display', 'none');
+		$('#blackLama2').css('display', 'none');
 		varGlobale = 100;
 		compteur++;
 		console.log(compteur);
@@ -358,8 +330,8 @@ $('#blacklama2').click(function(){
 
 //////////////////////////////////////////////////////////////////////
 
-$('#blacklapins').click(function(){
-	$('#blacklapins').css('z-index', 1);
+$('#blackLapins').click(function(){
+	$('#blackLapins').css('z-index', 1);
 	if(varGlobale == 100){
 		varGlobale = 333;
 		varLapins = 333;
@@ -385,8 +357,8 @@ $('#blacklapins').click(function(){
 		varOursDeux = 100;
 	}
 	else if(varGlobale == 333 && varLapinsDeux == 333){
-		$('#blacklapins').css('display', 'none');
-		$('#blacklapins2').css('display', 'none');
+		$('#blackLapins').css('display', 'none');
+		$('#blackLapins2').css('display', 'none');
 		varGlobale = 100;
 		compteur++;
 		console.log(compteur);
@@ -396,8 +368,8 @@ $('#blacklapins').click(function(){
 
 //////////////////////////////////////////////////////////////////////
 
-$('#blacklapins2').click(function(){
-	$('#blacklapins2').css('z-index', 1);
+$('#blackLapins2').click(function(){
+	$('#blackLapins2').css('z-index', 1);
 	if(varGlobale == 100){
 		varGlobale = 333;
 		varLapinsDeux = 333;
@@ -423,8 +395,8 @@ $('#blacklapins2').click(function(){
 		varOursDeux = 100;
 	}
 	else if(varGlobale == 333 && varLapins == 333){
-		$('#blacklapins').css('display', 'none');
-		$('#blacklapins2').css('display', 'none');
+		$('#blackLapins').css('display', 'none');
+		$('#blackLapins2').css('display', 'none');
 		varGlobale = 100;
 		compteur++;
 		console.log(compteur);
@@ -434,8 +406,8 @@ $('#blacklapins2').click(function(){
 
 //////////////////////////////////////////////////////////////////////
 
-$('#blacklionne').click(function(){
-	$('#blacklionne').css('z-index', 1);
+$('#blackLionne').click(function(){
+	$('#blackLionne').css('z-index', 1);
 	if(varGlobale == 100){
 		varGlobale = 333;
 		varLionne = 333;
@@ -461,8 +433,8 @@ $('#blacklionne').click(function(){
 		varOursDeux = 100;
 	}
 	else if(varGlobale == 333 && varLionneDeux == 333){
-		$('#blacklionne').css('display', 'none');
-		$('#blacklionne2').css('display', 'none');
+		$('#blackLionne').css('display', 'none');
+		$('#blackLionne2').css('display', 'none');
 		varGlobale = 100;
 		compteur++;
 		console.log(compteur);
@@ -472,8 +444,8 @@ $('#blacklionne').click(function(){
 
 //////////////////////////////////////////////////////////////////////
 
-$('#blacklionne2').click(function(){
-	$('#blacklionne2').css('z-index', 1);
+$('#blackLionne2').click(function(){
+	$('#blackLionne2').css('z-index', 1);
 	if(varGlobale == 100){
 		varGlobale = 333;
 		varLionneDeux = 333;
@@ -499,8 +471,8 @@ $('#blacklionne2').click(function(){
 		varOursDeux = 100;
 	}
 	else if(varGlobale == 333 && varLionne == 333){
-		$('#blacklionne').css('display', 'none');
-		$('#blacklionne2').css('display', 'none');
+		$('#blackLionne').css('display', 'none');
+		$('#blackLionne2').css('display', 'none');
 		varGlobale = 100;
 		compteur++;
 		console.log(compteur);
@@ -510,8 +482,8 @@ $('#blacklionne2').click(function(){
 
 //////////////////////////////////////////////////////////////////////
 
-$('#blackours').click(function(){
-	$('#blackours').css('z-index', 1);
+$('#blackOurs').click(function(){
+	$('#blackOurs').css('z-index', 1);
 	if(varGlobale == 100){
 		varGlobale = 333;
 		varOurs = 333;
@@ -537,8 +509,8 @@ $('#blackours').click(function(){
 		varOursDeux = 100;
 	}
 	else if(varGlobale == 333 && varOursDeux == 333){
-		$('#blackours').css('display', 'none');
-		$('#blackours2').css('display', 'none');
+		$('#blackOurs').css('display', 'none');
+		$('#blackOurs2').css('display', 'none');
 		varGlobale = 100;
 		compteur++;
 		console.log(compteur);
@@ -548,8 +520,8 @@ $('#blackours').click(function(){
 
 //////////////////////////////////////////////////////////////////////
 
-$('#blackours2').click(function(){
-	$('#blackours2').css('z-index', 1);
+$('#blackOurs2').click(function(){
+	$('#blackOurs2').css('z-index', 1);
 	if(varGlobale == 100){
 		varGlobale = 333;
 		varOursDeux = 333;
@@ -575,8 +547,8 @@ $('#blackours2').click(function(){
 		varOursDeux = 100;
 	}
 	else if(varGlobale == 333 && varOurs == 333){
-		$('#blackours').css('display', 'none');
-		$('#blackours2').css('display', 'none');
+		$('#blackOurs').css('display', 'none');
+		$('#blackOurs2').css('display', 'none');
 		varGlobale = 100;
 		compteur++;
 		console.log(compteur);
